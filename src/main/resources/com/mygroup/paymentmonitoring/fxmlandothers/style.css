@@ -1,0 +1,63 @@
+
+.buttons:hover{
+	-fx-background-color: #096fcd;
+	-fx-transition: 0.5s;
+}
+
+.buttons {
+	-fx-background-color: #3b7ff7;
+}
+
+.buttons:pressed{
+	-fx-background-color: #064580;
+	-fx-transition: 0.5s;
+}
+
+.sideBarMenu{
+	-fx-background-color:  #0b56a2;
+	-fx-alignment: center-left;
+}
+
+.sideBarMenu:hover{
+	-fx-background-color: #077ef7;
+	-fx-transition: 0.5s;
+}
+
+.sideBarMenu:pressed{
+	-fx-background-color: #064580;
+	-fx-transition: 0.5s;
+}
+
+.tabMenu{
+	-fx-font-size: 16px;
+	
+}
+
+
+.closebtn:hover{
+	-fx-background-color: #f34040;
+	-fx-transition: 0.5s;
+}
+
+.closebtn {
+	-fx-background-color: #e81515;
+}
+
+.closebtn:pressed{
+	-fx-background-color: #a70a0a;
+	-fx-transition: 0.5s;
+}
+
+.otherbtn:hover{
+	-fx-background-color: #0cc946;
+	-fx-transition: 0.5s;
+}
+
+.otherbtn {
+	-fx-background-color: #0ab53e;
+}
+
+.otherbtn:pressed{
+	-fx-background-color: #067728;
+	-fx-transition: 0.5s;
+}
