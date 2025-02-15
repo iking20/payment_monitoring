@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ButtonType?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<DialogPane prefHeight="271.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mygroup.paymentmonitoring.tools.controller.searchSellerAgentSceneController">
+   <content>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="288.0" prefWidth="600.0">
+         <children>
+            <TableView fx:id="SellerAgentTable" layoutX="17.0" layoutY="22.0" onMouseClicked="#selectIDNumber" prefHeight="256.0" prefWidth="566.0">
+              <columns>
+                <TableColumn fx:id="IDNoCol" prefWidth="110.0" text="ID No." />
+                <TableColumn fx:id="LastNameCol" prefWidth="150.0" text="Last Name" />
+                  <TableColumn fx:id="FirstNameCol" prefWidth="150.0" text="First Name" />
+                  <TableColumn fx:id="MiddleNameCol" prefWidth="150.0" text="Middle Name" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </content>
+   <buttonTypes>
+      <ButtonType fx:constant="OK" />
+      <ButtonType fx:constant="CANCEL" />
+   </buttonTypes>
+</DialogPane>

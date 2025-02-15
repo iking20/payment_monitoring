@@ -1,0 +1,1347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mygroup.paymentmonitoring.tools.controller.mainSceneController">
+   <children>
+      <AnchorPane fx:id="loginPane" prefHeight="720.0" prefWidth="1280.0">
+         <children>
+            <AnchorPane prefHeight="720.0" prefWidth="450.0" style="-fx-background-color: #3b7ff7;">
+               <children>
+                  <ImageView fitHeight="64.0" fitWidth="74.0" layoutX="183.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@money.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="8.0" layoutY="133.0" text="Real Estate Payment Monitoring System" textFill="#eae9e9">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="127.0" layoutY="188.0" text="Stay Cool, Prosper Well" textFill="#eae9e9">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="168.0" layoutY="160.0" text="(REPMS)" textFill="#eae9e9">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="450.0" layoutY="-7.0" prefHeight="726.0" prefWidth="830.0" style="-fx-background-color: #f7f8fa;">
+               <children>
+                  <Label layoutX="14.0" layoutY="131.0" text="Database Creedentials">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="user_textfield" layoutX="177.0" layoutY="171.0" prefHeight="26.0" prefWidth="270.0" />
+                  <TextField fx:id="host_textfield" layoutX="177.0" layoutY="258.0" prefHeight="26.0" prefWidth="270.0" />
+                  <TextField fx:id="port_textfield" layoutX="177.0" layoutY="301.0" prefHeight="26.0" prefWidth="270.0" />
+                  <TextField fx:id="db_textfield" layoutX="177.0" layoutY="345.0" prefHeight="26.0" prefWidth="270.0" />
+                  <RadioButton fx:id="bal_Rb" layoutX="177.0" layoutY="388.0" mnemonicParsing="false" text="Balanga" />
+                  <RadioButton fx:id="Abu_Rb" layoutX="250.0" layoutY="388.0" mnemonicParsing="false" text="Abucay" />
+                  <Button fx:id="connect_btn" layoutX="250.0" layoutY="421.0" mnemonicParsing="false" onAction="#doConnect" prefHeight="34.0" prefWidth="94.0" styleClass="buttons" text="Connect" textFill="#f4f2f2">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="close_btn" layoutX="352.0" layoutY="421.0" mnemonicParsing="false" onAction="#doClose" prefHeight="34.0" prefWidth="94.0" styleClass="closebtn" text="Close" textFill="#ece6e6">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="93.0" layoutY="174.0" text="Username">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="95.0" layoutY="218.0" text="Password">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="124.0" layoutY="261.0" text="Host">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="125.0" layoutY="304.0" text="Port">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="96.0" layoutY="348.0" text="Database">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="106.0" layoutY="387.0" text="Schema">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="pass_passfield" layoutX="175.0" layoutY="215.0" prefWidth="270.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="dashPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #eeeff0;">
+         <children>
+            <Pane fx:id="viewEditLotPane" layoutX="320.0" prefHeight="720.0" prefWidth="960.0" style="-fx-background-color: #f4f6f9;">
+               <children>
+                  <TableView fx:id="lotTbl" layoutX="14.0" layoutY="97.0" onMouseClicked="#onSelectLot" prefHeight="562.0" prefWidth="730.0">
+                     <columns>
+                        <TableColumn fx:id="lotblockNoCol" prefWidth="120.0" resizable="false" text="Block No." />
+                        <TableColumn fx:id="lotlotNoCol" prefWidth="120.0" resizable="false" text="Lot No." />
+                        <TableColumn fx:id="lotlotAreCol" prefWidth="120.0" resizable="false" text="Lot Area" />
+                        <TableColumn fx:id="lotPriceCol" prefWidth="120.0" resizable="false" text="Price / sq.m." />
+                        <TableColumn fx:id="lotTPriceCol" prefWidth="120.0" resizable="false" text="TCP" />
+                        <TableColumn fx:id="lotAvailCol" prefWidth="120.0" resizable="false" text="Availability" />
+                     </columns>
+                  </TableView>
+                  <TextField fx:id="lotSearchTxt" layoutX="128.0" layoutY="68.0" onKeyReleased="#viewFilterLot" prefWidth="310.0" promptText="Block No. / Lot No." />
+                  <Label layoutX="14.0" layoutY="72.0" text="Enter Keyword here:" />
+                  <Button fx:id="editLotBtn" layoutX="669.0" layoutY="667.0" mnemonicParsing="false" onAction="#showEditLotPane" styleClass="buttons" text="Edit Lot" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane fx:id="userSidePane" layoutY="67.0" prefHeight="589.0" prefWidth="320.0" style="-fx-background-color: #0b56a2;">
+               <children>
+                  <Button fx:id="BackBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="19.0" mnemonicParsing="false" onAction="#showUserMenu" prefHeight="42.0" prefWidth="319.0" styleClass="sideBarMenu" text="User's Menu" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                  </Button>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="16.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@dashboard.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="logout_btn1" layoutX="1.0" layoutY="68.0" mnemonicParsing="false" onAction="#doLogout" prefHeight="42.0" prefWidth="319.0" styleClass="sideBarMenu" text="Log Out" textFill="#ece5e5">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                  </Button>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="16.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@logout.png" />
+                     </image>
+                  </ImageView>
+               </children></Pane>
+            <Pane prefHeight="720.0" prefWidth="320.0" style="-fx-background-color: #0b56a2;">
+               <children>
+                  <Label layoutX="5.0" layoutY="7.0" text="REAL ESTATE PMS" textFill="#e7e3e3">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="dashBtn" layoutX="1.0" layoutY="102.0" mnemonicParsing="false" onAction="#showDashboard" prefHeight="42.0" prefWidth="319.0" styleClass="sideBarMenu" text="Dashboard" textFill="#ece5e5">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="reserveBtn" layoutX="1.0" layoutY="312.0" mnemonicParsing="false" onAction="#showReserve" prefHeight="42.0" prefWidth="319.0" styleClass="sideBarMenu" text="Reserve Lot" textFill="#ece5e5">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="addBtn" layoutX="1.0" layoutY="395.0" mnemonicParsing="false" onAction="#showAddPane" prefHeight="42.0" prefWidth="319.0" styleClass="sideBarMenu" text="Lot, Agent, Seller &amp; Client" textFill="#ece5e5">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                  </Button>
+                  <Button layoutX="1.0" layoutY="356.0" mnemonicParsing="false" onAction="#doPayment" prefHeight="42.0" prefWidth="319.0" styleClass="sideBarMenu" text="Make Payment" textFill="#ece5e5">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="viewDataBtn" layoutX="1.0" layoutY="186.0" mnemonicParsing="false" onAction="#showData" prefHeight="42.0" prefWidth="319.0" styleClass="sideBarMenu" text="View Other Data" textFill="#ece5e5">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="logout_btn" layoutX="1.0" layoutY="521.0" mnemonicParsing="false" onAction="#doLogout" prefHeight="42.0" prefWidth="319.0" styleClass="sideBarMenu" text="Log Out" textFill="#ece5e5">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                  </Button>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="14.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@dashboard.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="14.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@notes.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="14.0" layoutY="367.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@payment-method.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="14.0" layoutY="197.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@business-report.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="14.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@add-user.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="14.0" layoutY="532.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@logout.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="5.0" layoutY="78.0" text="ADMIN" textFill="#e7e3e3">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="ReportBtn" layoutX="1.0" layoutY="440.0" mnemonicParsing="false" onAction="#showReportPane" prefHeight="42.0" prefWidth="319.0" styleClass="sideBarMenu" text="Payment History" textFill="#ece5e5">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                  </Button>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="14.0" layoutY="451.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@budget.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="addExpenseBtn" layoutX="1.0" layoutY="228.0" mnemonicParsing="false" onAction="#showExpense" prefHeight="42.0" prefWidth="319.0" styleClass="sideBarMenu" text="Add Expenses" textFill="#ece5e5">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                  </Button>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="14.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@budget.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="viewContractBtn" layoutX="1.0" layoutY="144.0" mnemonicParsing="false" onAction="#showContractList" prefHeight="42.0" prefWidth="319.0" styleClass="sideBarMenu" text="View Client" textFill="#ece5e5">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                  </Button>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="14.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@contract.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="localtionLbl" layoutX="5.0" layoutY="38.0" prefHeight="27.0" prefWidth="225.0" text="()" textFill="#e7e3e3">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="agentCommBtn" layoutX="1.0" layoutY="270.0" mnemonicParsing="false" onAction="#showActualAgentComm" prefHeight="42.0" prefWidth="319.0" styleClass="sideBarMenu" text="Agent Commission" textFill="#ece5e5">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                  </Button>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="14.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@payment-method.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane fx:id="userPame" layoutX="320.0" prefHeight="720.0" prefWidth="960.0" style="-fx-background-color: #f4f6f9;">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" prefHeight="35.0" prefWidth="158.0" text="USER's MENU">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Pane layoutX="52.0" layoutY="74.0" prefHeight="180.0" prefWidth="300.0" style="-fx-background-color: #0b56a2; -fx-background-radius: 20;">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="14.0" prefHeight="40.0" prefWidth="300.0" text="RESERVE LOT" textFill="WHITE">
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="24.0" />
+                           </font>
+                        </Label>
+                     </children></Pane>
+                  <Pane layoutX="52.0" layoutY="136.0" prefHeight="126.0" prefWidth="300.0" style="-fx-background-color: e7e7e7; -fx-background-radius: 0;">
+                     <children>
+                        <ImageView fitHeight="86.0" fitWidth="86.0" layoutX="14.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@plot2.png" />
+                           </image>
+                        </ImageView>
+                        <Button layoutX="174.0" layoutY="75.0" mnemonicParsing="false" onAction="#showReserve" prefHeight="31.0" prefWidth="112.0" styleClass="buttons" text="Click Here" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Button>
+                     </children></Pane>
+                  <Pane layoutX="491.0" layoutY="74.0" prefHeight="180.0" prefWidth="300.0" style="-fx-background-color: #0b56a2; -fx-background-radius: 20;">
+                     <children>
+                        <Label alignment="CENTER" layoutX="-3.0" layoutY="14.0" prefHeight="40.0" prefWidth="310.0" text="MAKE PAYMENT" textFill="WHITE">
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="24.0" />
+                           </font>
+                        </Label>
+                     </children></Pane>
+                  <Pane layoutX="491.0" layoutY="136.0" prefHeight="126.0" prefWidth="300.0" style="-fx-background-color: e7e7e7; -fx-background-radius: 0;">
+                     <children>
+                        <ImageView fitHeight="86.0" fitWidth="86.0" layoutX="14.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@payment-method2.png" />
+                           </image>
+                        </ImageView>
+                        <Button layoutX="174.0" layoutY="75.0" mnemonicParsing="false" onAction="#doPayment" prefHeight="31.0" prefWidth="112.0" styleClass="buttons" text="Click Here" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Button>
+                     </children></Pane>
+                  <Pane layoutX="52.0" layoutY="292.0" prefHeight="180.0" prefWidth="300.0" style="-fx-background-color: #0b56a2; -fx-background-radius: 20;">
+                     <children>
+                        <Label alignment="CENTER" layoutX="6.0" layoutY="14.0" prefHeight="40.0" prefWidth="300.0" text="PAYMENT HISTORY" textFill="WHITE">
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Pane layoutY="59.0" prefHeight="126.0" prefWidth="300.0" style="-fx-background-color: e7e7e7; -fx-background-radius: 0;">
+                           <children>
+                              <ImageView fitHeight="86.0" fitWidth="86.0" layoutX="14.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@budget3.png" />
+                                 </image>
+                              </ImageView>
+                              <Button layoutX="174.0" layoutY="75.0" mnemonicParsing="false" onAction="#showReportPane" prefHeight="31.0" prefWidth="112.0" styleClass="buttons" text="Click Here" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="491.0" layoutY="292.0" prefHeight="180.0" prefWidth="300.0" style="-fx-background-color: #0b56a2; -fx-background-radius: 20;">
+                     <children>
+                        <Label alignment="CENTER" layoutY="14.0" prefHeight="40.0" prefWidth="300.0" text="LOT, AGENT, SELLER &amp; CLIENT" textFill="WHITE">
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Pane layoutY="59.0" prefHeight="126.0" prefWidth="300.0" style="-fx-background-color: e7e7e7; -fx-background-radius: 0;">
+                           <children>
+                              <ImageView fitHeight="86.0" fitWidth="86.0" layoutX="14.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@add.png" />
+                                 </image>
+                              </ImageView>
+                              <Button layoutX="174.0" layoutY="75.0" mnemonicParsing="false" onAction="#showAddPane" prefHeight="31.0" prefWidth="112.0" styleClass="buttons" text="Click Here" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="52.0" layoutY="503.0" prefHeight="180.0" prefWidth="300.0" style="-fx-background-color: #0b56a2; -fx-background-radius: 20;">
+                     <children>
+                        <Label alignment="CENTER" layoutX="6.0" layoutY="14.0" prefHeight="40.0" prefWidth="300.0" text="VIEW CLIENT" textFill="WHITE">
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Pane layoutY="59.0" prefHeight="126.0" prefWidth="300.0" style="-fx-background-color: e7e7e7; -fx-background-radius: 0;">
+                           <children>
+                              <ImageView fitHeight="86.0" fitWidth="86.0" layoutX="14.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@contract2.png" />
+                                 </image>
+                              </ImageView>
+                              <Button layoutX="174.0" layoutY="75.0" mnemonicParsing="false" onAction="#showContractList" prefHeight="31.0" prefWidth="112.0" styleClass="buttons" text="Click Here" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="491.0" layoutY="503.0" prefHeight="180.0" prefWidth="300.0" style="-fx-background-color: #0b56a2; -fx-background-radius: 20;">
+                     <children>
+                        <Label alignment="CENTER" layoutY="14.0" prefHeight="40.0" prefWidth="300.0" text="AGENT COMMISSION" textFill="WHITE">
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="23.0" />
+                           </font>
+                        </Label>
+                        <Pane layoutY="59.0" prefHeight="126.0" prefWidth="300.0" style="-fx-background-color: e7e7e7; -fx-background-radius: 0;">
+                           <children>
+                              <ImageView fitHeight="86.0" fitWidth="86.0" layoutX="14.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@payment-method2.png" />
+                                 </image>
+                              </ImageView>
+                              <Button layoutX="174.0" layoutY="75.0" mnemonicParsing="false" onAction="#showActualAgentComm" prefHeight="31.0" prefWidth="112.0" styleClass="buttons" text="Click Here" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="reservePane" layoutX="320.0" prefHeight="720.0" prefWidth="960.0" style="-fx-background-color: #f4f6f9;">
+               <children>
+                  <TitledPane animated="false" layoutX="14.0" layoutY="10.0" text="Add Customer">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="930.0">
+                           <children>
+                              <TextField fx:id="cust_no_txt" layoutX="89.0" layoutY="14.0" prefHeight="26.0" prefWidth="200.0" />
+                              <TextField fx:id="lname_txt" layoutX="89.0" layoutY="54.0" prefWidth="200.0" />
+                              <TextField fx:id="fname_txt" layoutX="298.0" layoutY="54.0" prefWidth="200.0" />
+                              <TextField fx:id="mname_txt" layoutX="506.0" layoutY="54.0" prefWidth="200.0" />
+                              <TextField fx:id="phone_txt" layoutX="298.0" layoutY="111.0" prefWidth="200.0" />
+                              <TextField fx:id="mail_txt" layoutX="506.0" layoutY="111.0" prefWidth="200.0" />
+                              <Label layoutX="9.0" layoutY="18.0" text="Customer No." />
+                              <Label layoutX="29.0" layoutY="58.0" text="Full Name" />
+                              <Label layoutX="166.0" layoutY="81.0" text="Last Name">
+                                 <font>
+                                    <Font name="System Italic" size="10.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="167.0" layoutY="137.0" text="Birthday">
+                                 <font>
+                                    <Font name="System Italic" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="374.0" layoutY="81.0" text="First Name">
+                                 <font>
+                                    <Font name="System Italic" size="10.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="577.0" layoutY="81.0" text="Middle Name">
+                                 <font>
+                                    <Font name="System Italic" size="10.0" />
+                                 </font>
+                              </Label>
+                              <DatePicker fx:id="bday" layoutX="89.0" layoutY="110.0" prefHeight="26.0" prefWidth="200.0" />
+                              <Label layoutX="368.0" layoutY="137.0" text="Phone  Number">
+                                 <font>
+                                    <Font name="System Italic" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="570.0" layoutY="137.0" text="Address">
+                                 <font>
+                                    <Font name="System Italic" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </TitledPane>
+                  <TitledPane animated="false" layoutX="14.0" layoutY="232.0" text="Add Contract">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="350.0" prefWidth="930.0">
+                           <children>
+                              <TextField fx:id="cont_no_txt" layoutX="89.0" layoutY="14.0" prefHeight="26.0" prefWidth="200.0" />
+                              <Label layoutX="14.0" layoutY="18.0" text="Contract No." />
+                              <ComboBox fx:id="blk_no" layoutX="89.0" layoutY="56.0" onAction="#doSelectLot" prefHeight="26.0" prefWidth="200.0" />
+                              <ComboBox fx:id="lot_no" layoutX="298.0" layoutY="56.0" onAction="#doCheckAvailibity" prefHeight="26.0" prefWidth="200.0" />
+                              <TextField fx:id="duration_txt" layoutX="715.0" layoutY="56.0" prefHeight="26.0" prefWidth="200.0" />
+                              <Label layoutX="151.0" layoutY="84.0" text="Block Number">
+                                 <font>
+                                    <Font name="System Italic" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="366.0" layoutY="84.0" text="Lot Number">
+                                 <font>
+                                    <Font name="System Italic" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="769.0" layoutY="83.0" text="Duration in Months">
+                                 <font>
+                                    <Font name="System Italic" size="12.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="price_txt" layoutX="90.0" layoutY="124.0" prefWidth="200.0" />
+                              <TextField fx:id="payment_txt" layoutX="298.0" layoutY="124.0" onKeyReleased="#computeBalance" prefWidth="200.0" />
+                              <TextField fx:id="total_price_txt" layoutX="506.0" layoutY="124.0" prefWidth="200.0" />
+                              <Label layoutX="174.0" layoutY="152.0" text="Price">
+                                 <font>
+                                    <Font name="System Italic" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="370.0" layoutY="152.0" text="Payment">
+                                 <font>
+                                    <Font name="System Italic" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="585.0" layoutY="152.0" text="Total Price ">
+                                 <font>
+                                    <Font name="System Italic" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="167.0" layoutY="221.0" text="Date Start">
+                                 <font>
+                                    <Font name="System Italic" size="12.0" />
+                                 </font>
+                              </Label>
+                              <DatePicker fx:id="date_start" layoutX="89.0" layoutY="194.0" onAction="#doSelectDate" prefHeight="26.0" prefWidth="200.0" />
+                              <DatePicker fx:id="date_end" editable="false" layoutX="298.0" layoutY="194.0" prefHeight="26.0" prefWidth="200.0" />
+                              <Label layoutX="366.0" layoutY="221.0" text="Date  End">
+                                 <font>
+                                    <Font name="System Italic" size="12.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="agent_no_txt" layoutX="90.0" layoutY="266.0" onKeyPressed="#doSearchAgentEnter" prefHeight="26.0" prefWidth="175.0" />
+                              <TextField fx:id="seller_no_txt" layoutX="298.0" layoutY="266.0" onKeyPressed="#doSearchSellerEnter" prefWidth="175.0" />
+                              <Label layoutX="160.0" layoutY="293.0" text="Agent Number">
+                                 <font>
+                                    <Font name="System Italic" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="360.0" layoutY="293.0" text="Seller Number">
+                                 <font>
+                                    <Font name="System Italic" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="search_agent_btn" layoutX="268.0" layoutY="268.0" mnemonicParsing="false" onAction="#doSearchAgent" prefWidth="20.0" styleClass="buttons" text="&gt;" textFill="WHITE">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="search_seller_btn" layoutX="476.0" layoutY="268.0" mnemonicParsing="false" onAction="#doSearchSeller" prefWidth="20.0" styleClass="buttons" text="&gt;" textFill="WHITE">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Button>
+                              <TextField fx:id="lot_area_txt" layoutX="506.0" layoutY="56.0" prefHeight="26.0" prefWidth="200.0" />
+                              <Label layoutX="569.0" layoutY="83.0" text="Lot Area in sq. m">
+                                 <font>
+                                    <Font name="System Italic" size="12.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="balance_txt" layoutX="715.0" layoutY="124.0" prefWidth="200.0" />
+                              <Label layoutX="793.0" layoutY="153.0" text="Balance">
+                                 <font>
+                                    <Font name="System Italic" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </TitledPane>
+                  <Button fx:id="submit_btn" layoutX="750.0" layoutY="626.0" mnemonicParsing="false" onAction="#doSubmit" prefHeight="34.0" prefWidth="94.0" styleClass="buttons" text="Submit" textFill="#f4f2f2">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="clear_btn" layoutX="853.0" layoutY="626.0" mnemonicParsing="false" onAction="#doClear" prefHeight="34.0" prefWidth="94.0" styleClass="closebtn" text="Clear" textFill="#f4f2f2">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane fx:id="addPane" layoutX="320.0" prefHeight="720.0" prefWidth="960.0" style="-fx-background-color: #f4f6f9;">
+               <children>
+                  <Button fx:id="addLotBtn" layoutX="93.0" layoutY="137.0" mnemonicParsing="false" onAction="#showLotPane" prefHeight="84.0" prefWidth="319.0" style="-fx-background-radius: 15;" styleClass="buttons" text="ADD LOT" textFill="#f7f5f5">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="addAgentBtn" layoutX="430.0" layoutY="137.0" mnemonicParsing="false" onAction="#showAgentPane" prefHeight="84.0" prefWidth="319.0" style="-fx-background-radius: 15;" styleClass="buttons" text="ADD AGENT" textFill="#f7f5f5">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="addSellerBtn" layoutX="93.0" layoutY="341.0" mnemonicParsing="false" onAction="#showSellerPane" prefHeight="84.0" prefWidth="319.0" style="-fx-background-radius: 15;" styleClass="buttons" text="ADD SELLER" textFill="#f7f5f5">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="38.0" fitWidth="30.0" layoutX="111.0" layoutY="368.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@add-user.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="38.0" fitWidth="30.0" layoutX="466.0" layoutY="163.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@add-user.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="41.0" fitWidth="40.0" layoutX="111.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@plot.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="14.0" layoutY="14.0" prefHeight="35.0" prefWidth="340.0" text="LOT, AGENT, SELLER &amp; CLIENT">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="editLotBtn" layoutX="93.0" layoutY="239.0" mnemonicParsing="false" onAction="#showLot" prefHeight="84.0" prefWidth="319.0" style="-fx-background-radius: 15;" styleClass="buttons" text="VIEW / EDIT LOT" textFill="#f7f5f5">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="41.0" fitWidth="40.0" layoutX="111.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@edit-image.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="agentCommSummary" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="430.0" layoutY="239.0" mnemonicParsing="false" onAction="#showAgentCommSummary" prefHeight="84.0" prefWidth="319.0" style="-fx-background-radius: 15;" styleClass="buttons" text="AGENT's COMMISSION SUMMARY" textAlignment="CENTER" textFill="#f7f5f5" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="clientSummaryBtn" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="430.0" layoutY="341.0" mnemonicParsing="false" onAction="#showClientSummaryonDue" prefHeight="84.0" prefWidth="319.0" style="-fx-background-radius: 15;" styleClass="buttons" text="SUMMARY OF CLIENTS on DUE" textAlignment="CENTER" textFill="#f7f5f5" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane fx:id="historyPane" layoutX="320.0" prefHeight="720.0" prefWidth="960.0" style="-fx-background-color: #f4f6f9;">
+               <children>
+                  <Label layoutX="31.0" layoutY="54.0" text="Enter keyword here:" />
+                  <TextField fx:id="historySearchContract" layoutX="146.0" layoutY="50.0" onKeyReleased="#viewFilterData" prefHeight="26.0" prefWidth="310.0" promptText="Customer No / Name" />
+                  <Button fx:id="ReportSOABtn" layoutX="828.0" layoutY="676.0" mnemonicParsing="false" onAction="#doGenerateSOA" prefHeight="26.0" prefWidth="106.0" styleClass="buttons" text="Generate SOA" textFill="#f4f2f2">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="14.0" layoutY="14.0" text="Payment History">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="historypaymentTbl" layoutX="28.0" layoutY="273.0" onMouseClicked="#onSelectPayment" prefHeight="392.0" prefWidth="906.0">
+                     <columns>
+                        <TableColumn fx:id="historypaymentCustIdCol" prefWidth="150.0" resizable="false" text="Customer No" />
+                        <TableColumn fx:id="historypaymentNameCol" prefWidth="250.0" resizable="false" text="Full Name" />
+                        <TableColumn fx:id="historypaymentAmountCol" minWidth="0.0" prefWidth="125.0" resizable="false" text="Paid Amount" />
+                        <TableColumn fx:id="historypaymentDateCol" minWidth="0.0" prefWidth="125.0" resizable="false" text="Payment Date" />
+                        <TableColumn fx:id="historypaymentSellCol" prefWidth="125.0" resizable="false" text="Seller Comm." />
+                        <TableColumn fx:id="historypaymentAgentCol" prefWidth="125.0" resizable="false" text="Agent Comm." />
+                     </columns>
+                  </TableView>
+                  <Button fx:id="historySearchContractBtn" layoutX="460.0" layoutY="52.0" minHeight="20.0" mnemonicParsing="false" onAction="#historysearchcontractShow" prefHeight="8.0" prefWidth="20.0" styleClass="buttons" text="&gt;" textFill="#f4f2f2">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="31.0" layoutY="114.0" text="Customer ID">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="historyCustID" editable="false" layoutX="31.0" layoutY="132.0" prefHeight="25.0" prefWidth="250.0" />
+                  <TextField fx:id="historyContID" editable="false" layoutX="31.0" layoutY="184.0" prefHeight="25.0" prefWidth="250.0" />
+                  <Label layoutX="31.0" layoutY="166.0" text="Contract ID">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="historyName" editable="false" layoutX="31.0" layoutY="237.0" prefWidth="250.0" />
+                  <Label layoutX="31.0" layoutY="219.0" text="Full Name">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="342.0" layoutY="114.0" text="Block Number">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="historyBlkNo" editable="false" layoutX="342.0" layoutY="132.0" prefWidth="250.0" />
+                  <TextField fx:id="historyLotNo" editable="false" layoutX="342.0" layoutY="184.0" prefWidth="250.0" />
+                  <Label layoutX="342.0" layoutY="166.0" text="Lot Number">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="historyLotArea" editable="false" layoutX="342.0" layoutY="237.0" prefWidth="250.0" />
+                  <Label layoutX="342.0" layoutY="219.0" text="Lot Area">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="653.0" layoutY="114.0" text="Total Contract Price">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="historyTCP" editable="false" layoutX="653.0" layoutY="132.0" prefWidth="250.0" />
+                  <TextField fx:id="historyPayment" editable="false" layoutX="653.0" layoutY="184.0" prefWidth="250.0" />
+                  <Label layoutX="653.0" layoutY="166.0" text="Payment">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="historyBalance" editable="false" layoutX="653.0" layoutY="237.0" prefWidth="250.0" />
+                  <Label layoutX="653.0" layoutY="219.0" text="Balance">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="historyClearBtn" layoutX="486.0" layoutY="52.0" minHeight="20.0" mnemonicParsing="false" onAction="#historyClear" prefHeight="20.0" prefWidth="40.0" styleClass="buttons" text="Clear" textFill="#f4f2f2">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="editpayBtn" layoutX="714.0" layoutY="676.0" mnemonicParsing="false" onAction="#showeditPayment" prefHeight="26.0" prefWidth="106.0" styleClass="buttons" text="Edit Payment" textFill="#f4f2f2">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane fx:id="paymentPane" layoutX="320.0" prefHeight="720.0" prefWidth="960.0" style="-fx-background-color: #f4f6f9;">
+               <children>
+                  <TitledPane animated="false" layoutX="14.0" layoutY="10.0" prefHeight="696.0" prefWidth="934.0" text="Add Payment">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="932.0">
+                           <children>
+                              <TextField fx:id="paymentCustIdTxt" layoutX="95.0" layoutY="9.0" onKeyPressed="#doSearchEnter" prefHeight="26.0" prefWidth="200.0" />
+                              <Label layoutX="50.0" layoutY="14.0" text="Search" />
+                              <Button fx:id="paymentSearchBtn" layoutX="299.0" layoutY="11.0" mnemonicParsing="false" onAction="#doSearchCustomer" prefHeight="20.0" prefWidth="20.0" styleClass="buttons" text="&gt;" textFill="#f4f3f3">
+                                 <font>
+                                    <Font name="System Bold" size="10.0" />
+                                 </font>
+                              </Button>
+                              <Pane layoutX="14.0" layoutY="47.0" prefHeight="610.0" prefWidth="450.0" style="-fx-background-color: #ffffff; -fx-border-color: #cbc7c7; -fx-border-style: solid; -fx-border-radius: 15; -fx-background-radius: 15;">
+                                 <children>
+                                    <Line endX="48.79997634887695" endY="106.39999389648438" layoutX="-16.0" layoutY="1.0" startX="431.46661376953125" startY="106.39998626708984" stroke="#0b56a2" strokeWidth="2.0" />
+                                    <Label fx:id="paymentNameLbl" layoutX="25.0" layoutY="75.0" text="Name">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="paymentContNoLbl" layoutX="350.0" layoutY="75.0" text="Cont-00000">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="20.0" layoutY="28.0" text="Contract Info">
+                                       <font>
+                                          <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="paymentblockNoLbl" layoutX="310.0" layoutY="128.0" text="Block No.">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="paymentlotNoLbl" layoutX="310.0" layoutY="167.0" text="Lot No.">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="paymentlotAreaLbl" layoutX="310.0" layoutY="206.0" text="Lot Area">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="57.0" layoutY="245.0" text="Price / sq. m">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="paymentPriceLbl" layoutX="310.0" layoutY="245.0" text="Price / sq. m">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="paymentPriceLbl1" layoutX="57.0" layoutY="284.0" text="Contract Price">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="paymentTPriceLbl" layoutX="310.0" layoutY="284.0" text="Contract Price">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Line endX="48.79997634887695" endY="106.39999389648438" layoutX="-16.0" layoutY="245.0" startX="431.46661376953125" startY="106.39998626708984" stroke="#0b56a2" strokeWidth="2.0" />
+                                    <Label layoutX="95.0" layoutY="376.0" text="Balance">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="paymentbalanceLbl" alignment="CENTER" layoutX="95.0" layoutY="399.0" prefHeight="65.0" prefWidth="283.0" style="-fx-background-color: #0b56a2; -fx-background-radius: 15;" text="00,000,000.00" textAlignment="CENTER" textFill="#fafafa">
+                                       <font>
+                                          <Font name="Berlin Sans FB Bold" size="31.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label fx:id="paymentCustNoLbl" layoutX="25.0" layoutY="53.0" text="Cust-00000">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="paymentPriceLbl11" layoutX="58.0" layoutY="323.0" text="Payment">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="paymentpaymentLbl" layoutX="311.0" layoutY="323.0" text="Payment">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="57.0" layoutY="128.0" text="Block No.">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="57.0" layoutY="167.0" text="Lot No.">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="57.0" layoutY="206.0" text="Lot Area">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="sellerCodeLbl" layoutX="130.0" layoutY="512.0" text="sellerCode" visible="false">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="agentCodeLbl" layoutX="249.0" layoutY="531.0" text="agentCode" visible="false">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <TableView fx:id="priceTbl" layoutX="510.0" layoutY="47.0" prefHeight="200.0" prefWidth="400.0">
+                                <columns>
+                                  <TableColumn fx:id="paymentCol" prefWidth="187.19989013671875" text="Payment" />
+                                  <TableColumn fx:id="dateCol" minWidth="0.0" prefWidth="199.2000732421875" text="Date" />
+                                </columns>
+                              </TableView>
+                              <Pane layoutX="510.0" layoutY="256.0" prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: #ffffff; -fx-border-color: #cbc7c7; -fx-border-style: solid; -fx-border-radius: 15; -fx-background-radius: 15;">
+                                 <children>
+                                    <Line endX="48.0" endY="106.39999389648438" layoutX="-16.0" layoutY="-49.0" startX="372.79986572265625" startY="106.4000244140625" stroke="#0b56a2" strokeWidth="2.0" />
+                                    <Label layoutX="99.0" layoutY="171.0" text="on Due:">
+                                       <font>
+                                          <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="paymentDueLbl" alignment="CENTER" contentDisplay="CENTER" layoutX="172.0" layoutY="188.0" prefHeight="57.0" prefWidth="168.0" style="-fx-background-color: #0b56a2; -fx-background-radius: 15;" text="000,000.00" textAlignment="CENTER" textFill="#fafafa">
+                                       <font>
+                                          <Font name="Berlin Sans FB Bold" size="24.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <TextField fx:id="amountToPay_txt" layoutX="172.0" layoutY="274.0" onKeyPressed="#validateInput" prefWidth="168.0">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="18.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="46.0" layoutY="256.0" text="Amount to Pay:">
+                                       <font>
+                                          <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="makePayBtn" layoutX="50.0" layoutY="336.0" mnemonicParsing="false" onAction="#doPay" prefHeight="42.0" prefWidth="290.0" styleClass="buttons" text="Make Payment" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Label layoutX="35.0" layoutY="93.0" text="Monthly Installment:">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="monthlyinstallmentLbl" layoutX="269.0" layoutY="93.0" text="000,000.00">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="ovedueLbl" layoutX="35.0" layoutY="117.0" text="Overdue">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="overdueAmountLbl" layoutX="269.0" layoutY="117.0" text="000,000.00">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <DatePicker fx:id="dueDatePicker" editable="false" layoutX="182.0" layoutY="24.0" onAction="#onSelecDuepayment" />
+                                    <Label layoutX="28.0" layoutY="28.0" text="Select payment Date:">
+                                       <font>
+                                          <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="ovedueLbl1" layoutX="35.0" layoutY="141.0" text="Left Over">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="leftoveramountLbl" layoutX="269.0" layoutY="141.0" text="000,000.00">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="35.0" layoutY="69.0" text="Actual Due Date:">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="actuaDueLbl" layoutX="269.0" layoutY="69.0" text="000,000.00">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </TitledPane>
+               </children>
+            </Pane>
+            <Pane fx:id="boardPane" layoutX="320.0" prefHeight="720.0" prefWidth="960.0" style="-fx-background-color: #f0f8ff;">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" prefHeight="35.0" prefWidth="158.0" text="DASHBOARD">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Pane layoutX="23.0" layoutY="63.0" prefHeight="110.0" prefWidth="170.0" style="-fx-background-color: #0686f5; -fx-background-radius: 15;">
+                     <children>
+                        <Label layoutX="15.0" layoutY="1.0" prefHeight="35.0" prefWidth="158.0" text="Customer's Payment" textFill="WHITE">
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="dashpaymentLbl" alignment="CENTER" layoutY="38.0" prefHeight="38.0" prefWidth="170.0" text="00,000,000" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="26.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="totalpaymentLbl" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutY="75.0" prefHeight="35.0" prefWidth="170.0" text="00,000,000" textFill="WHITE">
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets right="20.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="744.0" layoutY="63.0" prefHeight="110.0" prefWidth="190.0" style="-fx-background-color: #9306f5; -fx-background-radius: 15;">
+                     <children>
+                        <Label layoutX="15.0" layoutY="1.0" prefHeight="35.0" prefWidth="158.0" text="Available Fund" textFill="WHITE">
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="dashSellerLbl" alignment="CENTER" layoutY="38.0" prefHeight="35.0" prefWidth="190.0" text="00,000,000" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="32.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="203.0" layoutY="63.0" prefHeight="110.0" prefWidth="170.0" style="-fx-background-color: #f56f06; -fx-background-radius: 15;">
+                     <children>
+                        <Label layoutX="15.0" layoutY="1.0" prefHeight="35.0" prefWidth="158.0" text="Agent's Commission" textFill="WHITE">
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="dashAgentLbl" alignment="CENTER" layoutY="38.0" prefHeight="38.0" prefWidth="170.0" text="00,000,000" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="26.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <TableView fx:id="dashTbl" layoutX="23.0" layoutY="229.0" prefHeight="450.0" prefWidth="694.0">
+                    <columns>
+                      <TableColumn fx:id="dashCustNoCol" prefWidth="100.0" resizable="false" text="Customer No" />
+                      <TableColumn fx:id="dashBlkCol" prefWidth="70.0" resizable="false" text="Block No" />
+                        <TableColumn fx:id="dashLotCol" prefWidth="70.0" resizable="false" text="Lot No" />
+                        <TableColumn fx:id="dashPriceCol" prefWidth="85.0" resizable="false" text="Price/sq m." />
+                        <TableColumn fx:id="dashTpriceCol" prefWidth="90.0" resizable="false" text="TCP" />
+                        <TableColumn fx:id="dashPaymentCol" prefWidth="85.0" resizable="false" text="Payment" />
+                        <TableColumn fx:id="dashBalanceCol" prefWidth="85.0" resizable="false" text="Balance" />
+                        <TableColumn fx:id="dashSellerCol" prefWidth="95.0" resizable="false" text="Seller Comm." />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="searchContract_Txt" layoutX="161.0" layoutY="197.0" onKeyReleased="#SearchContractList" prefHeight="25.0" prefWidth="375.0" />
+                  <Pane layoutX="762.0" layoutY="260.0" prefHeight="110.0" prefWidth="150.0" style="-fx-background-color: #0686f5; -fx-background-radius: 15;">
+                     <children>
+                        <Label layoutX="15.0" layoutY="1.0" prefHeight="35.0" prefWidth="150.0" text="Available Lot" textFill="WHITE">
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lotAvailLbl" alignment="CENTER" layoutY="38.0" prefHeight="35.0" prefWidth="150.0" text="0" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="32.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="totalLotLbl" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutY="75.0" prefHeight="35.0" prefWidth="150.0" text="0" textFill="WHITE">
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets right="20.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="762.0" layoutY="385.0" prefHeight="110.0" prefWidth="150.0" style="-fx-background-color: #10a45a; -fx-background-radius: 15;">
+                     <children>
+                        <Label layoutX="15.0" layoutY="1.0" prefHeight="35.0" prefWidth="150.0" text="No. of Agents" textFill="WHITE">
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="agentLbl" alignment="CENTER" layoutY="38.0" prefHeight="35.0" prefWidth="150.0" text="0" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="32.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="762.0" layoutY="510.0" prefHeight="110.0" prefWidth="150.0" style="-fx-background-color: #f56f06; -fx-background-radius: 15;">
+                     <children>
+                        <Label layoutX="15.0" layoutY="1.0" prefHeight="35.0" prefWidth="150.0" text="No. of Seller" textFill="WHITE">
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="sellerLbl" alignment="CENTER" layoutY="38.0" prefHeight="35.0" prefWidth="150.0" text="0" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="32.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Label layoutX="23.0" layoutY="201.0" text="Enter Customer No. here:" />
+                  <Pane layoutX="383.0" layoutY="63.0" prefHeight="110.0" prefWidth="170.0" style="-fx-background-color: #10a45a; -fx-background-radius: 15;">
+                     <children>
+                        <Label layoutX="15.0" layoutY="1.0" prefHeight="35.0" prefWidth="158.0" text="Expenses" textFill="WHITE">
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="dashExpense" alignment="CENTER" layoutY="38.0" prefHeight="35.0" prefWidth="170.0" text="00,000,000" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="26.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="563.0" layoutY="63.0" prefHeight="110.0" prefWidth="170.0" style="-fx-background-color: #ba0b0b; -fx-background-radius: 15;">
+                     <children>
+                        <Label layoutX="15.0" layoutY="1.0" prefHeight="35.0" prefWidth="158.0" text="Refund" textFill="WHITE">
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="dashRefund" alignment="CENTER" layoutY="38.0" prefHeight="35.0" prefWidth="170.0" text="00,000,000" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="26.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="ContractPane" layoutX="320.0" prefHeight="720.0" prefWidth="960.0" style="-fx-background-color: #f4f6f9;">
+               <children>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="ViewContractTbl" layoutX="15.0" layoutY="140.0" onMouseClicked="#onSelectContract" prefHeight="514.0" prefWidth="906.0">
+                           <columns>
+                              <TableColumn fx:id="viewCustIdCol" resizable="false" text="Customer No" />
+                              <TableColumn fx:id="viewNameCol" prefWidth="200.0" text="Full Name" />
+                              <TableColumn fx:id="viewBlkNoCol" prefWidth="60.0" resizable="false" text="Block No" />
+                              <TableColumn fx:id="viewLotNoCol" prefWidth="50.0" resizable="false" text="Lot No" />
+                              <TableColumn fx:id="viewLotAreaCol" prefWidth="95.0" resizable="false" text="Lot Area /sq.m." />
+                              <TableColumn fx:id="viewDurationCol" prefWidth="60.0" resizable="false" text="Duration" />
+                              <TableColumn fx:id="viewPriceCol" resizable="false" text="Price" />
+                              <TableColumn fx:id="viewTPriceCol" resizable="false" text="TCP" />
+                              <TableColumn fx:id="viewPaymentCol" prefWidth="70.0" resizable="false" text="Payment" />
+                              <TableColumn fx:id="viewBalanceCol" prefWidth="75.0" resizable="false" text="Balance" />
+                              <TableColumn fx:id="viewLastPayment" prefWidth="130.0" resizable="false" text="Last Payment Date" />
+                              <TableColumn fx:id="viewDateStartCol" prefWidth="70.0" resizable="false" text="Date Start" />
+                              <TableColumn fx:id="viewDateEndCol" prefWidth="70.0" resizable="false" text="Date End" />
+                              <TableColumn fx:id="viewSellerName" prefWidth="100.0" resizable="false" text="Seller Name" />
+                              <TableColumn fx:id="viewSellerComm" prefWidth="100.0" resizable="false" text="Seller's Comm." />
+                              <TableColumn fx:id="viewAgentName" prefWidth="100.0" resizable="false" text="Agent Name" />
+                           </columns>
+                        </TableView>
+                        <Label layoutX="15.0" layoutY="70.0" text="Enter keyword here:" />
+                        <TextField fx:id="viewSearchContract" layoutX="130.0" layoutY="66.0" onKeyReleased="#viewFilterData" prefHeight="26.0" prefWidth="310.0" promptText="Customer No / Full Name" />
+                        <Button fx:id="generateSummaryBtn" layoutX="588.0" layoutY="105.0" mnemonicParsing="false" onAction="#dogenerateSummary" prefHeight="27.0" prefWidth="190.0" styleClass="buttons" text="Generate Summary Report" textFill="#f4f2f2">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="cancelReserve" layoutX="787.0" layoutY="105.0" mnemonicParsing="false" onAction="#cancelReservation" prefHeight="27.0" prefWidth="133.0" styleClass="closebtn" text="Cancel Reservation" textFill="#f4f2f2">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <ComboBox fx:id="MonthCombo" layoutX="15.0" layoutY="105.0" prefHeight="27.0" prefWidth="150.0" promptText="Select Month here.." />
+                        <Button fx:id="filterBtn" layoutX="170.0" layoutY="105.0" mnemonicParsing="false" onAction="#FilterSummaryTbl" styleClass="buttons" text="Filter" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="ClearFilterBtn" layoutX="225.0" layoutY="105.0" mnemonicParsing="false" onAction="#ClearFilter" styleClass="closebtn" text="Clear" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="14.0" layoutY="14.0" prefHeight="35.0" prefWidth="190.0" text="VIEW CLIENT">
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <Button fx:id="ClearSearchBtn" layoutX="444.0" layoutY="66.0" mnemonicParsing="false" onAction="#ClearSearch" prefHeight="26.0" styleClass="closebtn" text="Clear" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="tcp_textfield" editable="false" layoutX="459.0" layoutY="685.0" />
+                  <TextField fx:id="payment_textfield" editable="false" layoutX="615.0" layoutY="685.0" />
+                  <TextField fx:id="bal_textfield" editable="false" layoutX="772.0" layoutY="685.0" />
+                  <Label layoutX="459.0" layoutY="666.0" text="Total Contract Price">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="615.0" layoutY="666.0" text="Payment">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="772.0" layoutY="666.0" text="Balance">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="406.0" layoutY="688.0" text="TOTAL:">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="editInfoBtn" layoutX="429.0" layoutY="105.0" mnemonicParsing="false" onAction="#showEditInfo" prefHeight="27.0" prefWidth="150.0" styleClass="otherbtn" text="Edit Customer  Info" textFill="#f4f2f2">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane fx:id="dataPane" layoutX="320.0" prefHeight="720.0" prefWidth="960.0" style="-fx-background-color: #f4f6f9;">
+               <children>
+                  <TabPane fx:id="TabDataPane" layoutX="14.0" layoutY="10.0" onMousePressed="#doSelection" prefHeight="700.0" prefWidth="935.0" style="-fx-background-color: #f0f0f0;" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                        <Tab styleClass="tabMenu" text="Customer Info">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="viewCustomerTbl" layoutX="15.0" layoutY="60.0" prefHeight="562.0" prefWidth="876.0">
+                                       <columns>
+                                          <TableColumn fx:id="viewCustomerNoCol" prefWidth="100.0" text="Customer No" />
+                                          <TableColumn fx:id="viewFullNameCol" prefWidth="200.0" text="Name" />
+                                          <TableColumn fx:id="viewBirthdayCol" prefWidth="140.0" text="Birthday" />
+                                          <TableColumn fx:id="viewPhoneNoCol" prefWidth="140.0" text="Phone Number" />
+                                          <TableColumn fx:id="viewEmailAddCol" prefWidth="150.0" text="Address" />
+                                          <TableColumn fx:id="viewStatCol" prefWidth="140.0" text="Status" />
+                                       </columns>
+                                    </TableView>
+                                    <Label layoutX="15.0" layoutY="30.0" text="Enter Keyword here:" />
+                                    <TextField fx:id="viewsearchCustomerTxt" layoutX="130.0" layoutY="26.0" onKeyReleased="#viewFilterCustomer" prefWidth="310.0" promptText="Customer No. / Name" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab styleClass="tabMenu" text="Seller &amp; Agent">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="sellerTbl" layoutX="15.0" layoutY="70.0" prefHeight="287.0" prefWidth="400.0">
+                                      <columns>
+                                        <TableColumn fx:id="sellerNoCol" prefWidth="130.0" resizable="false" text="Seller No" />
+                                        <TableColumn fx:id="sellerNameCol" prefWidth="130.0" resizable="false" text="Name" />
+                                          <TableColumn fx:id="sellerTotalComm" prefWidth="130.0" resizable="false" text="Total Commission" />
+                                      </columns>
+                                    </TableView>
+                                    <Label layoutX="15.0" layoutY="40.0" text="Enter Keyword here:" />
+                                    <TextField fx:id="searchSellerTxt" layoutX="128.0" layoutY="36.0" onKeyReleased="#viewFilterSeller" prefWidth="200.0" promptText="Seller No. / Name" />
+                                    <TableView fx:id="agentTbl" layoutX="506.0" layoutY="70.0" prefHeight="287.0" prefWidth="400.0">
+                                       <columns>
+                                          <TableColumn fx:id="agentNoCol" prefWidth="61.60003662109375" resizable="false" text="Agent No" />
+                                          <TableColumn fx:id="agentNameCol" prefWidth="156.00006103515625" resizable="false" text="Name" />
+                                          <TableColumn fx:id="agentTotalComm" prefWidth="112.7999267578125" resizable="false" text="Total Commission" />
+                                          <TableColumn fx:id="agentCategoryCol" prefWidth="300.0" resizable="false" text="Description" />
+                                          <TableColumn fx:id="agentDateCol" prefWidth="150.0" resizable="false" text="Date" />
+                                       </columns>
+                                    </TableView>
+                                    <Label layoutX="506.0" layoutY="40.0" text="Enter Keyword here:" />
+                                    <TextField fx:id="searchAgentTxt" layoutX="621.0" layoutY="36.0" onKeyReleased="#viewFilterAgent" prefWidth="250.0" promptText="Agent No. / Name" />
+                                    <Label layoutX="15.0" layoutY="10.0" text="Seller Info">
+                                       <font>
+                                          <Font name="Berlin Sans FB Demi Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="506.0" layoutY="10.0" text="Agent Info">
+                                       <font>
+                                          <Font name="Berlin Sans FB Demi Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab styleClass="tabMenu" text="Expenses">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="viewExpenseTbl" layoutX="15.0" layoutY="60.0" prefHeight="562.0" prefWidth="860.0">
+                                       <columns>
+                                          <TableColumn fx:id="expenseNoCol" resizable="false" text="Expense No" />
+                                          <TableColumn fx:id="expenseDateCol" prefWidth="100.0" resizable="false" text="Date" />
+                                          <TableColumn fx:id="expenseCatCol" minWidth="150.0" prefWidth="100.0" resizable="false" text="Category" />
+                                          <TableColumn fx:id="expenseTitleCol" prefWidth="150.0" resizable="false" text="Title" />
+                                          <TableColumn fx:id="expenseDescpCol" editable="false" prefWidth="280.0" resizable="false" text="Description" />
+                                          <TableColumn fx:id="expenseAmountCol" editable="false" prefWidth="90.0" resizable="false" text="Amount" />
+                                       </columns>
+                                    </TableView>
+                                    <Label layoutX="15.0" layoutY="30.0" text="Enter Keyword here:" />
+                                    <TextField fx:id="viewSearchExpense" layoutX="130.0" layoutY="26.0" onKeyReleased="#viewFilterExpense" prefWidth="310.0" promptText="Expense No. / Title / Category" />
+                                    <ComboBox fx:id="filterComboMonth" layoutX="521.0" layoutY="25.0" prefHeight="27.0" prefWidth="150.0" promptText="Select Month here.." />
+                                    <Button fx:id="filterBtn2" layoutX="773.0" layoutY="25.0" mnemonicParsing="false" onAction="#FilterExpensesTbl" styleClass="buttons" text="Filter" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="ClearFilterBtn2" layoutX="826.0" layoutY="25.0" mnemonicParsing="false" onAction="#ClearFilter2" styleClass="closebtn" text="Clear" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <TextField fx:id="filterYearTxt" layoutX="680.0" layoutY="25.0" onKeyReleased="#viewFilterExpense" prefHeight="27.0" prefWidth="86.0" promptText="Enter Year:" />
+                                    <Button fx:id="expExtractBtn" layoutX="15.0" layoutY="628.0" mnemonicParsing="false" onAction="#doExtractExpenses" styleClass="otherbtn" text="Extract Data" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <TextField fx:id="expenseTotal" editable="false" layoutX="775.0" layoutY="628.0" onKeyReleased="#viewFilterExpense" prefHeight="27.0" prefWidth="90.0" style="-fx-background-color: #9bcffa; -fx-border-color: #5c5c5c; -fx-border-radius: 3;" />
+                                    <Label layoutX="741.0" layoutY="633.0" prefHeight="18.0" prefWidth="30.0" text="Total">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab styleClass="tabMenu" text="Refunded">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="refundTbl" layoutX="15.0" layoutY="60.0" prefHeight="562.0" prefWidth="860.0">
+                                       <columns>
+                                          <TableColumn fx:id="refundContNoCol" prefWidth="171.0" text="Contract Number" />
+                                          <TableColumn fx:id="refundCustNoCol" prefWidth="171.0" text="Customer Number" />
+                                          <TableColumn fx:id="refundBlockNoCol" minWidth="72.00006103515625" prefWidth="171.0" text="Block Number" />
+                                          <TableColumn fx:id="refundLotNoCol" prefWidth="171.0" text="Lot Number" />
+                                          <TableColumn fx:id="refundAmountCol" prefWidth="170.0" text="Refunded Amount" />
+                                       </columns>
+                                    </TableView>
+                                    <Label layoutX="15.0" layoutY="30.0" text="Enter Keyword here:" />
+                                    <TextField fx:id="viewSearchRefund" layoutX="130.0" layoutY="26.0" onKeyReleased="#viewFilterRefund" prefWidth="310.0" promptText="Contract Number / Customer Number" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

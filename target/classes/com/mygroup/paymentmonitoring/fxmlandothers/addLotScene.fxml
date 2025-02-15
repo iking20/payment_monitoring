@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="388.0" prefWidth="430.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mygroup.paymentmonitoring.tools.controller.addLotSceneController">
+   <children>
+      <TextField fx:id="addBlockNoTxt" layoutX="42.0" layoutY="115.0" onKeyPressed="#validateInput1" />
+      <TextField fx:id="addLotNoTxt" layoutX="234.0" layoutY="115.0" onKeyPressed="#validateInput2" />
+      <Label layoutX="42.0" layoutY="91.0" text="Block Number">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="234.0" layoutY="91.0" text="Lot Number">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="addLotAreaTxt" layoutX="46.0" layoutY="192.0" onKeyPressed="#validateInput3" onKeyReleased="#computeTCP" />
+      <TextField fx:id="addPriceTxt" layoutX="238.0" layoutY="192.0" onKeyPressed="#validateInput4" onKeyReleased="#computeTCP" />
+      <Label layoutX="46.0" layoutY="168.0" text="Lot Area per sq.m.">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="238.0" layoutY="168.0" text="Price per sq.m.">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="addTPriceTxt" editable="false" layoutX="46.0" layoutY="271.0" />
+      <Label layoutX="46.0" layoutY="247.0" text="Total Contract Price">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="238.0" layoutY="247.0" text="Color Code">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="addColorCombo" layoutX="238.0" layoutY="271.0" prefWidth="150.0" />
+      <Button fx:id="addLotSubmitBtn" layoutX="172.0" layoutY="335.0" mnemonicParsing="false" onAction="#doSubmit" prefHeight="38.0" prefWidth="119.0" styleClass="buttons" text="Submit" textFill="#eae6e6">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+      <Button fx:id="addLotCancelBtn" layoutX="296.0" layoutY="335.0" mnemonicParsing="false" onAction="#doCancel" prefHeight="38.0" prefWidth="119.0" styleClass="closebtn" text="Cancel" textFill="#eae6e6">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+      <TextField fx:id="addLotCode" editable="false" layoutX="42.0" layoutY="49.0" onKeyPressed="#validateInput1" />
+      <Label layoutX="42.0" layoutY="25.0" text="Lot Code">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
